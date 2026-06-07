@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Democracy Under Pressure | Honours Festival 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red:      #B82C1A;
+      --cream:    #F5F0E8;
+      --paper:    #EDE8DC;
+      --ink:      #1C1917;
+      --ink-mid:  #44403C;
+      --ink-light:#78716C;
+      --rule:     #C8BEA8;
+      --serif-display: 'Playfair Display', Georgia, serif;
+      --serif-body:    'Crimson Text', Georgia, serif;
+      --condensed:     'Bebas Neue', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif-body);
+      font-size: 19px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Paper grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--ink);
+      border-bottom: 3px solid var(--red);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+    }
+
+    .nav-logo {
+      font-family: var(--condensed);
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--condensed);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--rule);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 54px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated red glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 75% 60%, rgba(184,44,26,0.18) 0%, transparent 60%);
+      pointer-events: none;
+      animation: glow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(3rem, 8vw, 6rem) clamp(2rem, 6vw, 5rem);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--condensed);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 2px;
+      background: var(--red);
+    }
+
+    .hero-title {
+      font-family: var(--serif-display);
+      font-size: clamp(3.2rem, 6.5vw, 6rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--red);
+      display: block;
+    }
+
+    .hero-question {
+      font-family: var(--serif-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #D6CFC0;
+      margin-bottom: 2.5rem;
+      line-height: 1.3;
+      border-left: 3px solid var(--red);
+      padding-left: 1.25rem;
+    }
+
+    .hero-meta {
+      font-family: var(--condensed);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.15);
+      opacity: 0.5;
+      display: block;
+      transition: opacity 0.5s;
+    }
+
+    .hero-image:hover img { opacity: 0.65; }
+
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      background: linear-gradient(160deg, #2a2218 0%, #0e0c0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-light);
+      font-style: italic;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Big ghost year */
+    .hero-year {
+      position: absolute;
+      bottom: -1rem;
+      right: -0.5rem;
+      font-family: var(--condensed);
+      font-size: 11rem;
+      line-height: 1;
+      color: var(--red);
+      opacity: 0.08;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    /* Red arrow scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: clamp(2rem, 6vw, 5rem);
+      font-family: var(--condensed);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--red);
+      animation: bob 2s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 8vw, 8rem);
+    }
+
+    .section-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--condensed);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: var(--serif-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ink-mid);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    p { margin-bottom: 1.3rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* DARK SECTIONS */
+    .dark-section {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .dark-section .section-title { color: var(--cream); }
+    .dark-section .section-subtitle { color: var(--rule); border-color: #3a3530; }
+    .dark-section p { color: #D6CFC0; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left: 4px solid var(--red);
+      padding: 1.25rem 0 1.25rem 2rem;
+      margin: 2.5rem 0;
+      font-family: var(--serif-display);
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--cream);
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-family: var(--condensed);
+      letter-spacing: 0.15em;
+      color: var(--red);
+      margin-top: 0.75rem;
+    }
+
+    /* RESEARCH SECTIONS */
+    .research-section { border-top: 1px solid var(--rule); }
+    .research-section:nth-child(odd)  { background: var(--cream); }
+    .research-section:nth-child(even) { background: var(--paper); }
+
+    /* Category pill */
+    .research-tag {
+      display: inline-block;
+      font-family: var(--condensed);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      padding: 0.3rem 0.9rem;
+      background: var(--red);
+      color: white;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Poster float */
+    .poster-placeholder {
+      width: 260px;
+      aspect-ratio: 3/4;
+      background: var(--paper);
+      border: 1px dashed var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--ink-light);
+      font-style: italic;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 1.5rem;
+      float: right;
+      margin: 0 0 1.5rem 3rem;
+      shape-outside: margin-box;
+      transition: border-color 0.2s;
+    }
+
+    .poster-placeholder:hover { border-color: var(--red); }
+
+    .poster-placeholder::before {
+      content: '⊞';
+      font-size: 1.75rem;
+      opacity: 0.25;
+      font-style: normal;
+    }
+
+    /* BIG NUMBERS on section headers */
+    .section-big-number {
+      font-family: var(--condensed);
+      font-size: 7rem;
+      line-height: 0.85;
+      color: var(--red);
+      opacity: 0.08;
+      float: left;
+      margin-right: 1rem;
+      margin-top: -0.5rem;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    /* DIVIDER */
+    .red-rule {
+      width: 3rem;
+      height: 3px;
+      background: var(--red);
+      margin: 2rem 0;
+    }
+
+    /* ANALYSIS */
+    #analysis { background: var(--ink); }
+
+    /* REFERENCES */
+    #references { background: var(--paper); border-top: 1px solid var(--rule); }
+
+    .ref-group {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .ref-group:last-child { border-bottom: none; }
+
+    .ref-group-title {
+      font-family: var(--condensed);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .ref-group p {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+
+    /* TEAM */
+    #team { background: var(--ink); }
+    #team .section-title { color: var(--cream); }
+    #team .section-subtitle { color: var(--rule); border-color: #3a3530; }
+    #team p { color: #D6CFC0; }
+
+    .group-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #141210;
+      border: 1px dashed #3a3530;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--ink-light);
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .group-photo-placeholder::before {
+      content: '◻';
+      font-size: 2rem;
+      opacity: 0.15;
+      font-style: normal;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0e0c0a;
+      color: var(--ink-light);
+      padding: 3rem clamp(1.5rem, 8vw, 8rem);
+      border-top: 3px solid var(--red);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-left {
+      font-family: var(--serif-display);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #6a6058;
+    }
+
+    .footer-right {
+      font-family: var(--condensed);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-align: right;
+      line-height: 2;
+    }
+
+    .footer-right a { color: var(--red); text-decoration: none; }
+    .footer-right a:hover { text-decoration: underline; }
+
+    /* FADE IN */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 280px; order: -1; }
+      .nav-links { display: none; }
+      .poster-placeholder { float: none; width: 100%; aspect-ratio: 3/2; margin-left: 0; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-right { text-align: left; }
+      .section-big-number { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Democracy <span>Under Pressure</span></a>
+  <ul class="nav-links">
+    <li><a href="#intro">Background</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="#political">Political</a></li>
+    <li><a href="#psychology">Psychology</a></li>
+    <li><a href="#now">Now</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#team">Who We Are</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Honours Festival 2026 / University of Groningen</p>
+    <h1 class="hero-title">Democracy<br>Under<br><em>Pressure</em></h1>
+    <p class="hero-question">"What books would burn today?"</p>
+    <p class="hero-meta">University of Groningen / Honours College / June 24, 2026</p>
+    <p class="scroll-hint">↓ &nbsp; explore the exhibition</p>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-placeholder">
+      [ Archival photograph, 1933 Bebelplatz ]<br>
+      <small style="margin-top:0.5rem; opacity:0.5;">Replace with actual image</small>
+    </div>
+    <div class="hero-year">1933</div>
+  </div>
+</section>
+
+<!-- BACKGROUND -->
+<section id="intro" class="dark-section">
+  <div class="section-inner fade-in">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">From the Bebelplatz<br>to the Present</h2>
+    <p class="section-subtitle">A student exhibition on book burning, censorship, and democratic backsliding</p>
+
+    <p>On the night of 10 May 1933, students in Berlin gathered at the Bebelplatz and set fire to thousands of books. It was not a riot. It was a carefully planned event, organised by the German Student Union, designed to show the public which ideas were no longer allowed in the new Germany. Books by Rosa Luxemburg, Sigmund Freud, Heinrich Mann, Erich Kastner, and over a hundred others went up in flames.</p>
+
+    <p>This exhibition grew out of a course at the University of Groningen Honours College called <em>Democracy Under Pressure</em>. The course looked at how populism threatens liberal democracy and the rule of law. In the summer of 2025, students from the course travelled to Berlin and stood at the Bebelplatz themselves. They came back with one question.</p>
+
+    <blockquote class="pull-quote">
+      "Where they burn books, they will ultimately burn people also."
+      <cite>Heinrich Heine, 1820</cite>
+    </blockquote>
+
+    <p>What books would burn today? The answer is not obvious. Modern censorship rarely uses fire. Instead, it works through laws, funding cuts, algorithms, and quiet institutional pressure. It is slower, more subtle, and often harder to see. This exhibition looks at those mechanisms through five different lenses: history, law, politics, psychology, and the present day. It does not give a final answer. It asks you to think about your own.</p>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history" class="research-section">
+  <div class="section-inner fade-in">
+    <div class="section-big-number">01</div>
+    <p class="section-label">01 / History</p>
+    <span class="research-tag">Historical Context</span>
+
+    <div class="poster-placeholder">
+      [ Poster, History Group ]
+    </div>
+
+    <h2 class="section-title">Libricide: The<br>Burning of Ideas</h2>
+    <p class="section-subtitle">What is libricide, and why does it keep happening?</p>
+
+    <p>The 1933 burnings were not a one-off event. Scholar Rebecca Knuth calls the deliberate destruction of books and libraries <em>libricide</em>. Her research shows it is a recurring feature of extreme political regimes, one that appears again and again across the twentieth century.</p>
+
+    <p>When regimes want to reshape national identity, books become a target. They represent the ideas, voices, and histories that the regime wants to erase. Burning them is both practical and symbolic: it removes the content, and it sends a clear public message about who belongs and who does not.</p>
+
+    <p>The 1933 burnings were not unique to Nazi Germany. Libraries were also destroyed in Bosnia, Iraq, Tibet, and China, each time as part of a broader project of cultural and political control. The method changes. The logic does not.</p>
+
+    <div class="red-rule"></div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section id="legal" class="research-section">
+  <div class="section-inner fade-in">
+    <div class="section-big-number">02</div>
+    <p class="section-label">02 / Legal</p>
+    <span class="research-tag">Law &amp; Democratic Backsliding</span>
+
+    <div class="poster-placeholder">
+      [ Poster, Legal Group ]
+    </div>
+
+    <h2 class="section-title">When the Law<br>Becomes the Weapon</h2>
+    <p class="section-subtitle">How legal systems are used to silence ideas</p>
+
+    <p>You do not need fire to ban a book. Today, governments use the law.</p>
+
+    <p>In Hungary, a 2021 law requires bookstores to cover or restrict books that show LGBTQ characters, on the grounds of "child protection." In the United States, executive orders have removed books from federal institutions. In China, an entire technical system controls which information citizens can access online. None of these involve burning. All of them restrict what people can read.</p>
+
+    <p>Researcher Kim Lane Scheppele calls this <em>autocratic legalism</em>: the use of legal tools to dismantle democracy from the inside, while keeping up the appearance of being a democratic country. The laws look legitimate. The effect is censorship.</p>
+
+    <p>The 1933 burnings were a public spectacle, a show of raw power. Modern legal censorship is quieter. It does not need a crowd. It just needs a law that is vague enough, and enforced selectively enough, to make people self-censor out of fear.</p>
+
+    <div class="red-rule"></div>
+  </div>
+</section>
+
+<!-- POLITICAL -->
+<section id="political" class="research-section">
+  <div class="section-inner fade-in">
+    <div class="section-big-number">03</div>
+    <p class="section-label">03 / Political</p>
+    <span class="research-tag">Populism &amp; Democratic Erosion</span>
+
+    <div class="poster-placeholder">
+      [ Poster, Political Group ]
+    </div>
+
+    <h2 class="section-title">How Democracies<br>Fall Apart</h2>
+    <p class="section-subtitle">The political logic behind democratic backsliding</p>
+
+    <p>Democracy does not usually end overnight. It tends to erode slowly, through a series of steps that each seem manageable on their own.</p>
+
+    <p>It often starts with a leader who claims to represent the "real people" against a corrupt elite. Once elected, they begin weakening the institutions that are supposed to hold them accountable: the courts, the press, the universities. Each step is framed as necessary, or as the will of the majority. By the time the damage is obvious, it is much harder to reverse.</p>
+
+    <p>This pattern has played out in Hungary, Poland, Turkey, and elsewhere. It is not unique to any one political tradition. The specific enemy changes. The approach stays the same.</p>
+
+    <p>Democracy is not a fixed system. It requires active maintenance. Understanding how it can be taken apart is the first step toward protecting it.</p>
+
+    <div class="red-rule"></div>
+  </div>
+</section>
+
+<!-- PSYCHOLOGY -->
+<section id="psychology" class="research-section">
+  <div class="section-inner fade-in">
+    <div class="section-big-number">04</div>
+    <p class="section-label">04 / Psychology</p>
+    <span class="research-tag">Mass Psychology &amp; Conformity</span>
+
+    <div class="poster-placeholder">
+      [ Poster, Psychology Group ]
+    </div>
+
+    <h2 class="section-title">The Individual<br>and the Crowd</h2>
+    <p class="section-subtitle">Why ordinary people take part in extraordinary acts</p>
+
+    <p>The students who burned books in 1933 were not monsters. They were university students, not very different from students today. So how did it happen?</p>
+
+    <p>Research on social psychology shows that people are highly sensitive to what those around them are doing. When a crowd is cheering, staying silent feels dangerous. When authority figures are present, people tend to comply even when they privately disagree. The Milgram experiments and Asch conformity studies both showed that most people, under the right conditions, will go along with things they would normally reject.</p>
+
+    <p>This is not a comfortable finding. It suggests that the capacity for participation in collective harm is not limited to a particular type of person. It is shaped by circumstance.</p>
+
+    <p>That is what makes the question "would you have burned books in 1933?" genuinely difficult to answer with certainty. And that difficulty is the point.</p>
+
+    <div class="red-rule"></div>
+  </div>
+</section>
+
+<!-- NOW -->
+<section id="now" class="research-section">
+  <div class="section-inner fade-in">
+    <div class="section-big-number">05</div>
+    <p class="section-label">05 / Now</p>
+    <span class="research-tag">Contemporary Censorship</span>
+
+    <div class="poster-placeholder">
+      [ Poster, Now Group ]
+    </div>
+
+    <h2 class="section-title">Books Without<br>Flames</h2>
+    <p class="section-subtitle">What censorship looks like today</p>
+
+    <p>Books are still being banned. They are removed from school libraries, restricted to "adult only" sections, or simply made harder to find. The titles most frequently targeted in recent years include books about race, gender identity, sexuality, and political dissent.</p>
+
+    <p>But censorship today goes beyond books. Research gets suppressed before it is published. Scientists lose funding when their findings are politically inconvenient. In January 2025, the CDC banned its own scientists from using words like "female," "gender," and "transgender" in official publications. More than 7,800 research grants in the United States were frozen or cancelled, many targeting research on infectious disease and health inequalities.</p>
+
+    <p>Academic knowledge is also shaped by who funds it. Universities that receive money from fossil fuel companies have been shown to publish research more favourable to those industries, in a pattern similar to how tobacco companies funded scientists to cast doubt on the link between smoking and cancer.</p>
+
+    <p>The books in our physical exhibition have all been banned or challenged somewhere in the world. They are not there because we think they should be censored. They are there because someone, somewhere, decided they were dangerous enough to suppress.</p>
+
+    <div class="red-rule"></div>
+  </div>
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis" class="dark-section">
+  <div class="section-inner fade-in">
+    <p class="section-label">06 / Data Analysis</p>
+    <h2 class="section-title">Mapping the<br>Enemy of the State</h2>
+    <p class="section-subtitle">A data analysis of the 1933 Herrmann blacklist</p>
+
+    <p>When the Nazis compiled their list of books to burn, they organised the authors into categories: un-German spirit, Marxism, pacifism, Jewish intellectualism. These categories were presented as self-evident, as if the authors in each group clearly belonged together.</p>
+
+    <p>But did they? This part of the exhibition uses machine learning to test that claim. We took the descriptions of the roughly 130 authors on the Herrmann blacklist, ran them through a language model, and mapped the results visually. The question is simple: do the authors the Nazis grouped together actually share similar themes and ideas, or were the categories just convenient labels applied to a much more mixed group of targets?</p>
+
+    <p>The interactive visualisation will be added here once the analysis is complete. Each point will represent one author. You will be able to hover over it to read who they were, what they wrote, and how the Nazis classified them.</p>
+
+    <p style="font-size:0.875rem; color: #6a6058; font-style:italic;">Note: this analysis uses descriptions of authors from modern reference sources, not the original texts. The sample is around 130 authors, which is too small for statistical conclusions. The results are meant to prompt questions, not provide definitive answers.</p>
+
+    <!-- ML embed: uncomment when ready
+    <iframe src="YOUR_URL_HERE" width="100%" height="600" style="border:none; margin-top:2rem;"></iframe>
+    -->
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="section-inner fade-in">
+    <p class="section-label">References</p>
+    <h2 class="section-title">References</h2>
+    <p class="section-subtitle">Sources used across all five research groups</p>
+
+    <div class="ref-group">
+      <p class="ref-group-title">History</p>
+      <p>Sources to be added.</p>
+    </div>
+    <div class="ref-group">
+      <p class="ref-group-title">Legal</p>
+      <p>Sources to be added.</p>
+    </div>
+    <div class="ref-group">
+      <p class="ref-group-title">Political</p>
+      <p>Sources to be added.</p>
+    </div>
+    <div class="ref-group">
+      <p class="ref-group-title">Psychology</p>
+      <p>Sources to be added.</p>
+    </div>
+    <div class="ref-group">
+      <p class="ref-group-title">Now</p>
+      <p>Sources to be added.</p>
+    </div>
+    <div class="ref-group">
+      <p class="ref-group-title">Data Analysis</p>
+      <p>Sources to be added.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="dark-section">
+  <div class="section-inner fade-in">
+    <p class="section-label">Who We Are</p>
+    <h2 class="section-title">The Group</h2>
+    <p class="section-subtitle">Honours College, University of Groningen, 2025-2026</p>
+
+    <div class="group-photo-placeholder">
+      [ Group photograph ]<br>
+      <small style="opacity:0.5; margin-top:0.4rem;">Replace with actual photo</small>
+    </div>
+
+    <p>This exhibition was made by students from the University of Groningen Honours College, as part of the <em>Democracy Under Pressure</em> course run by Prof. dr. John Morijn. Students came from different faculties across the university. In the summer of 2025, the group travelled to Berlin and visited the Bebelplatz, the site of the 1933 book burnings.</p>
+
+    <p>The physical exhibition was shown at the Honours Festival on 24 June 2026 at the University of Groningen Academy Building. This website is its permanent online version.</p>
+
+    <!-- Team names: add when confirmed
+    <div class="team-grid"></div>
+    -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">"What books would burn today?"</div>
+  <div class="footer-right">
+    Honours Festival 2026 / University of Groningen<br>
+    In partnership with <a href="https://www.ourruleoflaw.eu" target="_blank">Our Rule of Law Foundation</a><br>
+    <span style="opacity:0.4;">Democracy Under Pressure / Honours College / 2025-2026</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
