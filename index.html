@@ -354,6 +354,13 @@
 
     .poster-placeholder:hover { border-color: var(--red); }
 
+    .poster-img {
+      width: 260px;
+      float: right;
+      margin: 0 0 1.5rem 3rem;
+      display: block;
+    }
+
     .poster-placeholder::before {
       content: '⊞';
       font-size: 1.75rem;
@@ -485,7 +492,7 @@
       .hero { grid-template-columns: 1fr; }
       .hero-image { min-height: 280px; order: -1; }
       .nav-links { display: none; }
-      .poster-placeholder { float: none; width: 100%; aspect-ratio: 3/2; margin-left: 0; }
+      .poster-placeholder, .poster-img { float: none; width: 100%; margin-left: 0; }
       footer { flex-direction: column; align-items: flex-start; }
       .footer-right { text-align: left; }
       .section-big-number { display: none; }
@@ -520,10 +527,7 @@
     <p class="scroll-hint">↓ &nbsp; explore the exhibition</p>
   </div>
   <div class="hero-image">
-    <div class="hero-image-placeholder">
-      [ Archival photograph, 1933 Bebelplatz ]<br>
-      <small style="margin-top:0.5rem; opacity:0.5;">Replace with actual image</small>
-    </div>
+    <img src="477.-Book-burning-after-looting-of-Institute-of-Sexology.jpg" alt="1933 Bebelplatz book burning, Berlin" />
     <div class="hero-year">1933</div>
   </div>
 </section>
@@ -555,9 +559,7 @@
     <p class="section-label">01 / History</p>
     <span class="research-tag">Historical Context</span>
 
-    <div class="poster-placeholder">
-      [ Poster, History Group ]
-    </div>
+    <img class="poster-img" src="History Group Poster.jpg" alt="History Group poster" />
 
     <h2 class="section-title">Libricide: The<br>Burning of Ideas</h2>
     <p class="section-subtitle">What is libricide, and why does it keep happening?</p>
@@ -579,9 +581,7 @@
     <p class="section-label">02 / Legal</p>
     <span class="research-tag">Law &amp; Democratic Backsliding</span>
 
-    <div class="poster-placeholder">
-      [ Poster, Legal Group ]
-    </div>
+    <img class="poster-img" src="Legal aspects.jpg" alt="Legal Group poster" />
 
     <h2 class="section-title">When the Law<br>Becomes the Weapon</h2>
     <p class="section-subtitle">How legal systems are used to silence ideas</p>
@@ -605,9 +605,7 @@
     <p class="section-label">03 / Political</p>
     <span class="research-tag">Populism &amp; Democratic Erosion</span>
 
-    <div class="poster-placeholder">
-      [ Poster, Political Group ]
-    </div>
+    <img class="poster-img" src="political.jpg" alt="Political Group poster" />
 
     <h2 class="section-title">How Democracies<br>Fall Apart</h2>
     <p class="section-subtitle">The political logic behind democratic backsliding</p>
