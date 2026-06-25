@@ -395,7 +395,6 @@
     #analysis { background: var(--ink); }
 
     /* REFERENCES */
-    #references { background: var(--paper); border-top: 1px solid var(--rule); }
 
     .ref-group {
       padding: 1.5rem 0;
@@ -497,6 +496,25 @@
       .footer-right { text-align: left; }
       .section-big-number { display: none; }
     }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .poster-img { cursor: zoom-in; }
   </style>
 </head>
 <body>
@@ -512,7 +530,6 @@
     <li><a href="#psychology">Psychology</a></li>
     <li><a href="#now">Now</a></li>
     <li><a href="#analysis">Analysis</a></li>
-    <li><a href="#references">References</a></li>
     <li><a href="#team">Who We Are</a></li>
   </ul>
 </nav>
@@ -520,7 +537,6 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <p class="hero-eyebrow">Honours Festival 2026 / University of Groningen</p>
     <h1 class="hero-title">Democracy<br>Under<br><em>Pressure</em></h1>
     <p class="hero-question">"What books would burn today?"</p>
     <p class="hero-meta">University of Groningen / Honours College / June 24, 2026</p>
@@ -568,7 +584,7 @@
 
     <p>When regimes want to reshape national identity, books become a target. They represent the ideas, voices, and histories that the regime wants to erase. Burning them is both practical and symbolic: it removes the content, and it sends a clear public message about who belongs and who does not.</p>
 
-    <p>The 1933 burnings were not unique to Nazi Germany. Libraries were also destroyed in Bosnia, Iraq, Tibet, and China, each time as part of a broader project of cultural and political control. The method changes. The logic does not.</p>
+    <p>The 1933 burnings were not unique to Nazi Germany. Libraries were also destroyed in Bosnia, Iraq, Tibet, and China, each time as part of a broader project of cultural and political control. The details differ across contexts, but the underlying reasoning tends to be the same: when a regime wants to reshape what is thinkable, the places where ideas are stored become targets.</p>
 
     <div class="red-rule"></div>
   </div>
@@ -586,13 +602,11 @@
     <h2 class="section-title">When the Law<br>Becomes the Weapon</h2>
     <p class="section-subtitle">How legal systems are used to silence ideas</p>
 
-    <p>You do not need fire to ban a book. Today, governments use the law.</p>
+    <p>Fire is not the only way to restrict what people can read. Increasingly, governments have turned to law instead. In Hungary, a 2021 law requires bookstores to cover or restrict books that show LGBTQ characters, on the grounds of "child protection." In the United States, executive orders have removed books from federal institutions. In China, an entire technical system controls which information citizens can access online.</p>
 
-    <p>In Hungary, a 2021 law requires bookstores to cover or restrict books that show LGBTQ characters, on the grounds of "child protection." In the United States, executive orders have removed books from federal institutions. In China, an entire technical system controls which information citizens can access online. None of these involve burning. All of them restrict what people can read.</p>
+    <p>Researcher Kim Lane Scheppele calls this <em>autocratic legalism</em>: the use of legal tools to dismantle democracy from the inside, while keeping up the appearance of legitimacy. The result is that restrictions on reading and access can be imposed through mechanisms that look entirely lawful, which is precisely what makes them difficult to challenge.</p>
 
-    <p>Researcher Kim Lane Scheppele calls this <em>autocratic legalism</em>: the use of legal tools to dismantle democracy from the inside, while keeping up the appearance of being a democratic country. The laws look legitimate. The effect is censorship.</p>
-
-    <p>The 1933 burnings were a public spectacle, a show of raw power. Modern legal censorship is quieter. It does not need a crowd. It just needs a law that is vague enough, and enforced selectively enough, to make people self-censor out of fear.</p>
+    <p>The contrast with 1933 is instructive. The book burnings were deliberately public — a show of force meant to intimidate as much as to destroy. Contemporary censorship tends to operate differently: a vague regulation, selectively enforced, can produce the same chilling effect without ever requiring a crowd or a match.</p>
 
     <div class="red-rule"></div>
   </div>
@@ -614,9 +628,9 @@
 
     <p>It often starts with a leader who claims to represent the "real people" against a corrupt elite. Once elected, they begin weakening the institutions that are supposed to hold them accountable: the courts, the press, the universities. Each step is framed as necessary, or as the will of the majority. By the time the damage is obvious, it is much harder to reverse.</p>
 
-    <p>This pattern has played out in Hungary, Poland, Turkey, and elsewhere. It is not unique to any one political tradition. The specific enemy changes. The approach stays the same.</p>
+    <p>This pattern has played out in Hungary, Poland, Turkey, and elsewhere, and it is not unique to any one political tradition. Who gets cast as the enemy varies — immigrants, judges, journalists, academics — but the underlying approach tends to follow the same course: consolidate power, delegitimise opposition, and reframe democratic safeguards as obstacles.</p>
 
-    <p>Democracy is not a fixed system. It requires active maintenance. Understanding how it can be taken apart is the first step toward protecting it.</p>
+    <p>Democracy is not a fixed condition. It requires active maintenance, and part of that is understanding the ways in which it can be gradually dismantled — often in plain sight, and often with broad public support at each individual step.</p>
 
     <div class="red-rule"></div>
   </div>
@@ -629,9 +643,7 @@
     <p class="section-label">04 / Psychology</p>
     <span class="research-tag">Mass Psychology &amp; Conformity</span>
 
-    <div class="poster-placeholder">
-      [ Poster, Psychology Group ]
-    </div>
+    <img class="poster-img" src="psychology.jpg" alt="Psychology Group poster" />
 
     <h2 class="section-title">The Individual<br>and the Crowd</h2>
     <p class="section-subtitle">Why ordinary people take part in extraordinary acts</p>
@@ -655,9 +667,7 @@
     <p class="section-label">05 / Now</p>
     <span class="research-tag">Contemporary Censorship</span>
 
-    <div class="poster-placeholder">
-      [ Poster, Now Group ]
-    </div>
+    <img class="poster-img" src="now.png" alt="Now Group poster" />
 
     <h2 class="section-title">Books Without<br>Flames</h2>
     <p class="section-subtitle">What censorship looks like today</p>
@@ -674,61 +684,6 @@
   </div>
 </section>
 
-<!-- ANALYSIS -->
-<section id="analysis" class="dark-section">
-  <div class="section-inner fade-in">
-    <p class="section-label">06 / Data Analysis</p>
-    <h2 class="section-title">Mapping the<br>Enemy of the State</h2>
-    <p class="section-subtitle">A data analysis of the 1933 Herrmann blacklist</p>
-
-    <p>When the Nazis compiled their list of books to burn, they organised the authors into categories: un-German spirit, Marxism, pacifism, Jewish intellectualism. These categories were presented as self-evident, as if the authors in each group clearly belonged together.</p>
-
-    <p>But did they? This part of the exhibition uses machine learning to test that claim. We took the descriptions of the roughly 130 authors on the Herrmann blacklist, ran them through a language model, and mapped the results visually. The question is simple: do the authors the Nazis grouped together actually share similar themes and ideas, or were the categories just convenient labels applied to a much more mixed group of targets?</p>
-
-    <p>The interactive visualisation will be added here once the analysis is complete. Each point will represent one author. You will be able to hover over it to read who they were, what they wrote, and how the Nazis classified them.</p>
-
-    <p style="font-size:0.875rem; color: #6a6058; font-style:italic;">Note: this analysis uses descriptions of authors from modern reference sources, not the original texts. The sample is around 130 authors, which is too small for statistical conclusions. The results are meant to prompt questions, not provide definitive answers.</p>
-
-    <!-- ML embed: uncomment when ready
-    <iframe src="YOUR_URL_HERE" width="100%" height="600" style="border:none; margin-top:2rem;"></iframe>
-    -->
-  </div>
-</section>
-
-<!-- REFERENCES -->
-<section id="references">
-  <div class="section-inner fade-in">
-    <p class="section-label">References</p>
-    <h2 class="section-title">References</h2>
-    <p class="section-subtitle">Sources used across all five research groups</p>
-
-    <div class="ref-group">
-      <p class="ref-group-title">History</p>
-      <p>Sources to be added.</p>
-    </div>
-    <div class="ref-group">
-      <p class="ref-group-title">Legal</p>
-      <p>Sources to be added.</p>
-    </div>
-    <div class="ref-group">
-      <p class="ref-group-title">Political</p>
-      <p>Sources to be added.</p>
-    </div>
-    <div class="ref-group">
-      <p class="ref-group-title">Psychology</p>
-      <p>Sources to be added.</p>
-    </div>
-    <div class="ref-group">
-      <p class="ref-group-title">Now</p>
-      <p>Sources to be added.</p>
-    </div>
-    <div class="ref-group">
-      <p class="ref-group-title">Data Analysis</p>
-      <p>Sources to be added.</p>
-    </div>
-  </div>
-</section>
-
 <!-- TEAM -->
 <section id="team" class="dark-section">
   <div class="section-inner fade-in">
@@ -736,10 +691,7 @@
     <h2 class="section-title">The Group</h2>
     <p class="section-subtitle">Honours College, University of Groningen, 2025-2026</p>
 
-    <div class="group-photo-placeholder">
-      [ Group photograph ]<br>
-      <small style="opacity:0.5; margin-top:0.4rem;">Replace with actual photo</small>
-    </div>
+    <img src="grouppicture.jpeg" alt="Group photograph" style="width:100%; margin-bottom:1.5rem; display:block;" />
 
     <p>This exhibition was made by students from the University of Groningen Honours College, as part of the <em>Democracy Under Pressure</em> course run by Prof. dr. John Morijn. Students came from different faculties across the university. In the summer of 2025, the group travelled to Berlin and visited the Bebelplatz, the site of the 1933 book burnings.</p>
 
@@ -755,8 +707,6 @@
 <footer>
   <div class="footer-left">"What books would burn today?"</div>
   <div class="footer-right">
-    Honours Festival 2026 / University of Groningen<br>
-    In partnership with <a href="https://www.ourruleoflaw.eu" target="_blank">Our Rule of Law Foundation</a><br>
     <span style="opacity:0.4;">Democracy Under Pressure / Honours College / 2025-2026</span>
   </div>
 </footer>
@@ -766,7 +716,19 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.poster-img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('open');
+    });
+  });
+  lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
 </script>
 
+<div id="lightbox"><img id="lightbox-img" src="" alt="" /></div>
 </body>
 </html>
